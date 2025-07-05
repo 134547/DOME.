@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Dillu Clone</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    /* Auth Page */
+    .auth-page {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 10vh auto;
+      max-width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .auth-page h2 {
+      margin-bottom: 1.5rem;
+      color: #1a73e8;
+    }
+
+    .auth-page input {
+      width: 100%;
+      padding: 12px;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .auth-page button {
+      width: 100%;
+      padding: 12px;
+      margin: 1rem 0;
+      border: none;
+      border-radius: 6px;
+      background: #1a73e8;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .auth-page button:hover {
+      background: #1557b0;
+    }
+
+    /* Main App */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem;
+      background: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+
+    .navbar button {
+      background: none;
+      border: none;
+      padding: 0.8rem;
+      font-size: 1.2rem;
+      color: #666;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .navbar button.active {
+      color: #1a73e8;
+    }
+
+    .post {
+      background: white;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .post img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 0.5rem 0;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .logout-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #c82333;
+    }
+
+    .post-form {
+      margin: 1rem 0;
+    }
+
+    .post-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .post-form input[type="file"] {
+      margin: 1rem 0;
+    }
+
+    .search-results {
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0.5rem;
+      }
+      .navbar button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Auth Page -->
+    <div id="authPage" class="auth-page">
+      <h2>Sign Up / Log In</h2>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button onclick="login()">Log In / Sign Up</button>
+    </div>
+
+    <!-- Main App Page -->
+    <div id="appPage" class="hidden">
+      <div id="mainView"></div>
+
+      <!-- Navbar -->
+      <div class="navbar">
+        <button onclick="showPage('home')">🏠</button>
+        <button onclick="showPage('reels')">🎬</button>
+        <button onclick="showPage('search')">🔍</button>
+        <button onclick="showPage('profile')">👤</button>
+        <button onclick="showPage('post')">📝</button>
+        <button onclick="showPage('setting')">⚙️</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let posts = [
+      { username: 'User1', image: 'https://placekitten.com/300/200', text: 'Meow! 🐱' },
+      { username: 'User2', image: 'https://placebear.com/300/200', text: 'Bear vibes 🐻' }
+    ];
+
+    // Check for existing user session
+    window.onload = function() {
+      const savedUser = localStorage.getItem('currentUser');
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        document.getElementById('authPage').classList.add('hidden');
+        document.getElementById('appPage').classList.remove('hidden');
+        showPage('home');
+      }
+    };
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !email || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      currentUser = { username, email };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      document.getElementById('authPage').classList.add('hidden');
+      document.getElementById('appPage').classList.remove('hidden');
+      showPage('home');
+    }
+
+    function updateNavbar(activePage) {
+      document.querySelectorAll('.navbar button').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.onclick.toString().includes(activePage)) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    function showPage(page) {
+      const main = document.getElementById('mainView');
+      main.innerHTML = '';
+      updateNavbar(page);
+
+      if (page === 'home') {
+        main.innerHTML = `
+          <div class="home">
+            <h2>Home Feed</h2>
+            ${posts.map(post => `
+              <div class="post">
+                <p><strong>${post.username}</strong></p>
+                ${post.image ? `<img src="${post.image}" alt="Post">` : ''}
+                <p>${post.text}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else if (page === 'reels') {
+        main.innerHTML = `
+          <div class="reels">
+            <h2>Reels</h2>
+            <video controls>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+        `;
+      } else if (page === 'search') {
+        main.innerHTML = `
+          <div class="search">
+            <h2>Search</h2>
+            <input type="text" id="searchInput" placeholder="Search users/posts" oninput="search()">
+            <div id="searchResults" class="search-results"></div>
+          </div>
+        `;
+      } else if (page === 'profile') {
+        main.innerHTML = `
+          <div class="profile">
+            <h2>My Profile</h2>
+            <p><strong>Username:</strong> ${currentUser.username}</p>
+            <p><strong>Email:</strong> ${currentUser.email}</p>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
+        `;
+      } else if (page === 'post') {
+        main.innerHTML = `
+          <div class="post-form">
+            <h2>Create a Post</h2>
+ ${currentUser ? `
+            <textarea id="postText" placeholder="Write something..."></textarea>
+            <input type="file" id="postImage" accept="image/*">
+            <button onclick="createPost()">Post</button>
+          ` : `
+            <p>Please log in to create a post</p>
+          `}
+          </div>
+        `;
+      } else if (page === 'setting') {
+        main.innerHTML = `
+          <div class="setting">
+            <h2>Settings</h2>
+            <p>Notifications: <input type="checkbox" checked> Enable notifications</p>
+            <p>Theme: <select><option>Light</option><option>Dark</option></select></p>
+          </div>
+        `;
+      }
+    }
+
+    function createPost() {
+      const text = document.getElementById('postText').value;
+      const imageInput = document.getElementById('postImage');
+      let imageUrl = '';
+
+      if (imageInput.files && imageInput.files[0]) {
+        imageUrl = URL.createObjectURL(imageInput.files[0]);
+      }
+
+      if (!text && !imageUrl) {
+        alert('Please add text or an image to post');
+        return;
+      }
+
+      posts.unshift({
+        username: currentUser.username,
+        text: text,
+        image: imageUrl
+      });
+
+      showPage('home');
+    }
+
+    function search() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const results = document.getElementById('searchResults');
+      const filteredPosts = posts.filter(post => 
+        post.username.toLowerCase().includes(searchTerm) || 
+        post.text.toLowerCase().includes(searchTerm)
+      );
+
+      results.innerHTML = filteredPosts.map(post => `
+        <div class="post">
+          <p><strong>${post.username}</strong></p>
+          ${post.image ? `<img src="${post.image}" alt="Post">` : ''}
+          <p>${post.text}</p>
+        </div>
+      `).join('') || '<p>No results found</p>';
+    }
+
+    function logout() {
+      currentUser = null;
+      localStorage.removeItem('currentUser');
+      document.getElementById('appPage').classList.add('hidden');
+      document.getElementById('authPage').classList.remove('hidden');
+      document.getElementById('username').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+</body>
+</html>
