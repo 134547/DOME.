@@ -9,16 +9,18 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f0f2f5;
       color: #333;
-      background-image:url(Dilshad.jpg);
+      background-image: url('Dilshad.jpg');
       background-size: cover;
-     
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .hidden {
@@ -26,9 +28,13 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 100%;
+      width: 100%;
       margin: 0 auto;
       padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Auth Page */
@@ -36,8 +42,8 @@
       background: white;
       border-radius: 10px;
       padding: 2rem;
-      margin: 10vh auto;
-      max-width: 400px;
+      margin: 5vh auto;
+      width: min(90%, 400px);
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
@@ -86,7 +92,7 @@
       box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     }
 
-    .navbar button {
+    .navbar button, .navbar a {
       background: none;
       border: none;
       padding: 0.8rem;
@@ -94,9 +100,10 @@
       color: #666;
       cursor: pointer;
       transition: color 0.3s;
+      text-decoration: none;
     }
 
-    .navbar button.active {
+    .navbar button.active, .navbar a.active {
       color: #1a73e8;
     }
 
@@ -106,6 +113,10 @@
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .post img {
@@ -113,12 +124,14 @@
       height: auto;
       border-radius: 8px;
       margin: 0.5rem 0;
+      display: block;
     }
 
     video {
-      width: 100%;
+      max-width: 100%;
       height: auto;
       border-radius: 8px;
+      display: block;
     }
 
     .logout-btn {
@@ -138,6 +151,10 @@
 
     .post-form {
       margin: 1rem 0;
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .post-form textarea {
@@ -151,18 +168,37 @@
 
     .post-form input[type="file"] {
       margin: 1rem 0;
+      width: 100%;
+    }
+
+    .post-form button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
     }
 
     .search-results {
       margin-top: 1rem;
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (max-width: 600px) {
       .container {
         padding: 0.5rem;
       }
-      .navbar button {
+      .navbar button, .navbar a {
         font-size: 1rem;
+      }
+      .auth-page {
+        width: 95%;
+        margin: 2vh auto;
       }
     }
   </style>
@@ -177,22 +213,19 @@
       <input type="password" id="password" placeholder="Password" required>
       <button onclick="login()">Log In / Sign Up</button>
     </div>
-<ul class="nav-links">
-            
-           
-        </ul>
+
     <!-- Main App Page -->
     <div id="appPage" class="hidden">
       <div id="mainView"></div>
 
       <!-- Navbar -->
       <div class="navbar">
-        <a href="index.html">🏠</a>
-        <button onclick="showPage('reels')">🎬</button>
-        <button onclick="showPage('search')">🔍</button>
-        <button onclick="showPage('profile')">👤</button>
-        <button onclick="showPage('post')">📝</button>
-        <button onclick="showPage('setting')">⚙️</button>
+        <a href="#" onclick="showPage('home')" class="nav-link">🏠</a>
+        <button onclick="showPage('reels')" class="nav-link">🎬</button>
+        <button onclick="showPage('search')" class="nav-link">🔍</button>
+        <button onclick="showPage('profile')" class="nav-link">👤</button>
+        <button onclick="showPage('post')" class="nav-link">📝</button>
+        <button onclick="showPage('setting')" class="nav-link">⚙️</button>
       </div>
     </div>
   </div>
@@ -233,9 +266,9 @@
     }
 
     function updateNavbar(activePage) {
-      document.querySelectorAll('.navbar button').forEach(btn => {
+      document.querySelectorAll('.navbar button, .navbar a').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.onclick.toString().includes(activePage)) {
+        if (btn.onclick && btn.onclick.toString().includes(activePage)) {
           btn.classList.add('active');
         }
       });
@@ -253,7 +286,7 @@
             ${posts.map(post => `
               <div class="post">
                 <p><strong>${post.username}</strong></p>
-                ${post.image ? `<img src="${post.image}" alt="Post">` : ''}
+                ${post.image ? `<img src="${post.image}" alt="Post image">` : ''}
                 <p>${post.text}</p>
               </div>
             `).join('')}
@@ -290,13 +323,13 @@
         main.innerHTML = `
           <div class="post-form">
             <h2>Create a Post</h2>
- ${currentUser ? `
-            <textarea id="postText" placeholder="Write something..."></textarea>
-            <input type="file" id="postImage" accept="image/*">
-            <button onclick="createPost()">Post</button>
-          ` : `
-            <p>Please log in to create a post</p>
-          `}
+            ${currentUser ? `
+              <textarea id="postText" placeholder="Write something..."></textarea>
+              <input type="file" id="postImage" accept="image/*">
+              <button onclick="createPost()">Post</button>
+            ` : `
+              <p>Please log in to create a post</p>
+            `}
           </div>
         `;
       } else if (page === 'setting') {
@@ -310,13 +343,30 @@
       }
     }
 
-    function createPost() {
-      const text = document.getElementById('postText').value;
+    async function createPost() {
+      const text = document.getElementById('postText').value.trim();
       const imageInput = document.getElementById('postImage');
       let imageUrl = '';
 
       if (imageInput.files && imageInput.files[0]) {
-        imageUrl = URL.createObjectURL(imageInput.files[0]);
+        try {
+          const file = imageInput.files[0];
+          // Validate file size (limit to 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            alert('Image size must be less than 5MB');
+            return;
+          }
+          
+          // Convert image to base64 for persistent storage
+          const reader = new FileReader();
+          imageUrl = await new Promise((resolve) => {
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(file);
+          });
+        } catch (error) {
+          alert('Error uploading image: ' + error.message);
+          return;
+        }
       }
 
       if (!text && !imageUrl) {
@@ -329,6 +379,13 @@
         text: text,
         image: imageUrl
       });
+
+      // Save posts to localStorage for persistence
+      localStorage.setItem('posts', JSON.stringify(posts));
+
+      // Clear form
+      document.getElementById('postText').value = '';
+      document.getElementById('postImage').value = '';
 
       showPage('home');
     }
@@ -344,7 +401,7 @@
       results.innerHTML = filteredPosts.map(post => `
         <div class="post">
           <p><strong>${post.username}</strong></p>
-          ${post.image ? `<img src="${post.image}" alt="Post">` : ''}
+          ${post.image ? `<img src="${post.image}" alt="Post image">` : ''}
           <p>${post.text}</p>
         </div>
       `).join('') || '<p>No results found</p>';
@@ -359,6 +416,14 @@
       document.getElementById('email').value = '';
       document.getElementById('password').value = '';
     }
+
+    // Load saved posts from localStorage
+    window.addEventListener('load', () => {
+      const savedPosts = localStorage.getItem('posts');
+      if (savedPosts) {
+        posts = JSON.parse(savedPosts);
+      }
+    });
   </script>
 </body>
 </html>
