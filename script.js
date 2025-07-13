@@ -1,17 +1,13 @@
-document.getElementById('admin-login-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Admin login successful!');
-    window.location.href = 'index.html';
+// Toggle three-dot menu
+document.querySelector('.menu-icon').addEventListener('click', function() {
+    const dropdown = document.querySelector('.dropdown-menu');
+    dropdown.classList.toggle('active');
 });
 
-document.getElementById('student-login-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Student login successful!');
-    window.location.href = 'index.html';
-});
-
-document.getElementById('teacher-login-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Teacher login successful!');
-    window.location.href = 'index.html';
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const menuContainer = document.querySelector('.menu-container');
+    if (!menuContainer.contains(event.target)) {
+        document.querySelector('.dropdown-menu').classList.remove('active');
+    }
 });
