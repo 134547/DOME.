@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-container">
+    <h2>Signup</h2>
+    <form onsubmit="handleSignup(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="gmail">Gmail Username:</label>
+        <input type="email" id="gmail" placeholder="example@gmail.com" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <input type="submit" value="Signup">
+    </form>
+</div>
+
+<script>
+    function handleSignup(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const gmail = document.getElementById('gmail').value;
+        const password = document.getElementById('password').value;
+
+        // Save signup data in localStorage
+        localStorage.setItem('signupName', name);
+        localStorage.setItem('signupEmail', gmail);
+        localStorage.setItem('signupPassword', password);
+
+        // Redirect to login page
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>
