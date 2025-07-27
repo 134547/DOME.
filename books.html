@@ -1,222 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books from Open Library </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            background-image: url('Dilshad.jpg');
+<main>
+<link rel="stylesheet" href="book.css">
+	<section>
+		<header>
+			<h1>Reading</h1>
+		</header>
+		<article style="--avarage-color: #b0b6a9">
+			<figure>
+				<a href="1.pdf">
+				<img src="1 cover.PNG" alt="Clickble image">
+				<figcaption>BOBBI SCHEMERHORN</figcaption>
+				</a>
+			</figure>
+		</article>
 
-        }
-        .navbar {
-                position: sticky;
-                top: 0px;
-                background-color: #07eb07;
-                color: rgb(201, 59, 165);
-                padding: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                z-index:10;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .book-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            z-index:9;
-        }
-        .book {
-            background-color: rbg(15, 228, 243);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            text-align: center;
-            transform: perspective(1000px) rotateY(10deg);
-            transition: transform 0.3s ease;
-        }
-        .book:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-        .book img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .book h3 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #2c3e50;
-        }
-        .book p {
-            margin: 5px 0;
-            color: #7f8c8d;
-        }
-        .book a {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-        }
-        .book a:hover {
-            color: #2980b9;
-        }
-        .insta-ui {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 10px;
-        }
-        .insta-ui span {
-            margin-right: 10px;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">Dillu Academy Library</div>
-        <ul class="nav-links">
-            <li><a href="books.html">Books</a></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="classes.html">Classes</a></li>
-            <li><a href="publishing.html">Publishing</a></li>
-        </ul>
-    </nav>
-    <h1>Books from Open Library with 3D Instagram-Style Covers</h1>
-    <div class="book-list">
-        <div class="book">
-            <img src="https://img.freepik.com/free-psd/book-cover-mockup_125540-572.jpg" alt="Pride and Prejudice 3D Cover">
-            <h3>Pride and Prejudice</h3>
-            <p>Jane Austen</p>
-            <p>Classics</p>
-            <a href="https://openlibrary.org/works/OL362973W/Pride_and_Prejudice" target="_blank">View on Open Library</a>
-            <div class="insta-ui">
-                <span>❤️ 1.2k likes</span>
-                <span>💬 45 comments</span>
-            </div>
-        </div>
-        <div class="book">
-            <img src="https://img.freepik.com/free-psd/book-cover-mockup_125540-573.jpg" alt="Frankenstein 3D Cover">
-            <h3>Frankenstein</h3>
-            <p>Mary Shelley</p>
-            <p>Classics</p alcoholism
-            <a href="https://openlibrary.org/works/OL262765W/Frankenstein" target="_blank">View on Open Library</a>
-            <div class="insta-ui">
-                <span>❤️ 1.5k likes</span>
-                <span>💬 30 comments</span>
-            </div>
-        </div>
-        <div class="book">
-            <img src="https://img.freepik.com/free-psd/book-cover-mockup_125540-574.jpg" alt="The Adventures of Huckleberry Finn 3D Cover">
-            <h3>The Adventures of Huckleberry Finn</h3>
-            <p>Mark Twain</p>
-            <p>Classics</p>
-            <a href="https://openlibrary.org/works/OL107030W/The_Adventures_of_Huckleberry_Finn" target="_blank">View on Open Library</a>
-            <div class="insta-ui">
-                <span>❤️ 1.1k likes</span>
-                <span>💬 50 comments</span>
-            </div>
-        </div>
-        <div class="book">
-            <img src="https://img.freepik.com/free-psd/book-cover-mockup_125540-575.jpg" alt="Jane Eyre 3D Cover">
-            <h3>Jane Eyre</h3>
-            <p>Charlotte Brontë</p>
-            <p>Classics</p>
-            <a href="https://openlibrary.org/works/OL158182W/Jane_Eyre" target="_blank">View on Open Library</a>
-            <div class="insta-ui">
-                <span>❤️ 1.8k likes</span>
-                <span>💬 60 comments</span>
-            </div>
-        </div>
-        <div class="book">
-            <img src="https://img.freepik.com/free-psd/book-cover-mockup_125540-576.jpg" alt="Wuthering Heights 3D Cover">
-            <h3>Wuthering Heights</h3>
-            <p>Emily Brontë</p>
-            <p>Classics</p>
-            <a href="https://openlibrary.org/works/OL115989W/Wuthering_Heights" target="_blank">View on Open Library</a>
-            <div class="insta-ui">
-                <span>❤️ 1.3k likes</span>
-                <span>💬 35 comments</span>
-            </div>
-        </div>
-        <script>
-            // JavaScript to dynamically generate remaining book entries
-            const books = [
-                { title: "Moby-Dick", author: "Herman Melville", genre: "Classics", link: "https://openlibrary.org/works/OL152141W/Moby-Dick", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-577.jpg" },
-                { title: "The Scarlet Letter", author: "Nathaniel Hawthorne", genre: "Classics", link: "https://openlibrary.org/works/OL148824W/The_Scarlet_Letter", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-578.jpg" },
-                { title: "Great Expectations", author: "Charles Dickens", genre: "Classics", link: "https://openlibrary.org/works/OL1491355W/Great_Expectations", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-579.jpg" },
-                { title: "Dracula", author: "Bram Stoker", genre: "Horror", link: "https://openlibrary.org/works/OL152168W/Dracula", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-580.jpg" },
-                { title: "The Picture of Dorian Gray", author: "Oscar Wilde", genre: "Classics", link: "https://openlibrary.org/works/OL162084W/The_Picture_of_Dorian_Gray", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-581.jpg" },
-                { title: "Gulliver’s Travels", author: "Jonathan Swift", genre: "Classics", link: "https://openlibrary.org/works/OL158884W/Gulliver_s_Travels", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-582.jpg" },
-                { title: "The Adventures of Tom Sawyer", author: "Mark Twain", genre: "Classics", link: "https://openlibrary.org/works/OL107029W/The_Adventures_of_Tom_Sawyer", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-583.jpg" },
-                { title: "A Tale of Two Cities", author: "Charles Dickens", genre: "Classics", link: "https://openlibrary.org/works/OL1491354W/A_Tale_of_Two_Cities", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-584.jpg" },
-                { title: "Little Women", author: "Louisa May Alcott", genre: "Classics", link: "https://openlibrary.org/works/OL159289W/Little_Women", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-585.jpg" },
-                { title: "The Secret Garden", author: "Frances Hodgson Burnett", genre: "Children's", link: "https://openlibrary.org/works/OL159290W/The_Secret_Garden", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-586.jpg" },
-                { title: "Alice’s Adventures in Wonderland", author: "Lewis Carroll", genre: "Children's", link: "https://openlibrary.org/works/OL158308W/Alice_s_Adventures_in_Wonderland", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-587.jpg" },
-                { title: "Treasure Island", author: "Robert Louis Stevenson", genre: "Classics", link: "https://openlibrary.org/works/OL158885W/Treasure_Island", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-588.jpg" },
-                { title: "A Christmas Carol", author: "Charles Dickens", genre: "Classics", link: "https://openlibrary.org/works/OL1491353W/A_Christmas_Carol", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-589.jpg" },
-                { title: "The Call of the Wild", author: "Jack London", genre: "Classics", link: "https://openlibrary.org/works/OL158886W/The_Call_of_the_Wild", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-590.jpg" },
-                { title: "The Wind in the Willows", author: "Kenneth Grahame", genre: "Children's", link: "https://openlibrary.org/works/OL158887W/The_Wind_in_the_Willows", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-591.jpg" },
-                { title: "Peter Pan", author: "J.M. Barrie", genre: "Children's", link: "https://openlibrary.org/works/OL158888W/Peter_Pan", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-592.jpg" },
-                { title: "The Jungle Book", author: "Rudyard Kipling", genre: "Children's", link: "https://openlibrary.org/works/OL158889W/The_Jungle_Book", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-593.jpg" },
-                { title: "Anne of Green Gables", author: "L.M. Montgomery", genre: "Children's", link: "https://openlibrary.org/works/OL109451W/Anne_of_Green_Gables", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-594.jpg" },
-                { title: "Sense and Sensibility", author: "Jane Austen", genre: "Classics", link: "https://openlibrary.org/works/OL362974W/Sense_and_Sensibility", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-595.jpg" },
-                { title: "Emma", author: "Jane Austen", genre: "Classics", link: "https://openlibrary.org/works/OL362975W/Emma", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-596.jpg" },
-                { title: "Persuasion", author: "Jane Austen", genre: "Classics", link: "https://openlibrary.org/works/OL362976W/Persuasion", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-597.jpg" },
-                { title: "Robinson Crusoe", author: "Daniel Defoe", genre: "Classics", link: "https://openlibrary.org/works/OL158890W/Robinson_Crusoe", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-598.jpg" },
-                { title: "The Three Musketeers", author: "Alexandre Dumas", genre: "Classics", link: "https://openlibrary.org/works/OL160798W/The_Three_Musketeers", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-599.jpg" },
-                { title: "Les Misérables", author: "Victor Hugo", genre: "Classics", link: "https://openlibrary.org/works/OL160799W/Les_Misérables", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-600.jpg" },
-                { title: "The War of the Worlds", author: "H.G. Wells", genre: "Science Fiction", link: "https://openlibrary.org/works/OL158891W/The_War_of_the_Worlds", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-601.jpg" },
-                { title: "The Time Machine", author: "H.G. Wells", genre: "Science Fiction", link: "https://openlibrary.org/works/OL158892W/The_Time_Machine", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-602.jpg" },
-                { title: "Twenty Thousand Leagues Under the Sea", author: "Jules Verne", genre: "Science Fiction", link: "https://openlibrary.org/works/OL158893W/Twenty_Thousand_Leagues_Under_the_Sea", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-603.jpg" },
-                { title: "Journey to the Center of the Earth", author: "Jules Verne", genre: "Science Fiction", link: "https://openlibrary.org/works/OL158894W/Journey_to_the_Center_of_the_Earth", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-604.jpg" },
-                { title: "The Invisible Man", author: "H.G. Wells", genre: "Science Fiction", link: "https://openlibrary.org/works/OL158895W/The_Invisible_Man", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-605.jpg" },
-                { title: "Oliver Twist", author: "Charles Dickens", genre: "Classics", link: "https://openlibrary.org/works/OL1491358W/Oliver_Twist", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-606.jpg" },
-                { title: "David Copperfield", author: "Charles Dickens", genre: "Classics", link: "https://openlibrary.org/works/OL1491359W/David_Copperfield", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-607.jpg" },
-                { title: "The Strange Case of Dr Jekyll and Mr Hyde", author: "Robert Louis Stevenson", genre: "Horror", link: "https://openlibrary.org/works/OL158896W/The_Strange_Case_of_Dr_Jekyll_and_Mr_Hyde", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-608.jpg" },
-                { title: "Around the World in Eighty Days", author: "Jules Verne", genre: "Adventure", link: "https://openlibrary.org/works/OL158897W/Around_the_World_in_Eighty_Days", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-609.jpg" },
-                { title: "Walden", author: "Henry David Thoreau", genre: "Non-Fiction", link: "https://openlibrary.org/works/OL158898W/Walden", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-610.jpg" },
-                { title: "The Prince", author: "Niccolò Machiavelli", genre: "Non-Fiction", link: "https://openlibrary.org/works/OL158899W/The_Prince", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-611.jpg" },
-                { title: "Don Quixote", author: "Miguel de Cervantes", genre: "Classics", link: "https://openlibrary.org/works/OL183346W/Don_Quixote", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-612.jpg" },
-                { title: "The Count of Monte Cristo", author: "Alexandre Dumas", genre: "Classics", link: "https://openlibrary.org/works/OL160797W/The_Count_of_Monte_Cristo", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-613.jpg" },
-                { title: "Crime and Punishment", author: "Fyodor Dostoyevsky", genre: "Classics", link: "https://openlibrary.org/works/OL1598977W/Crime_and_Punishment", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-614.jpg" },
-                { title: "The Brothers Karamazov", author: "Fyodor Dostoyevsky", genre: "Classics", link: "https://openlibrary.org/works/OL1598978W/The_Brothers_Karamazov", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-615.jpg" },
-                { title: "Anna Karenina", author: "Leo Tolstoy", genre: "Classics", link: "https://openlibrary.org/works/OL178657W/Anna_Karenina", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-616.jpg" },
-                { title: "The Metamorphosis", author: "Franz Kafka", genre: "Classics", link: "https://openlibrary.org/works/OL109100W/The_Metamorphosis", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-617.jpg" },
-                { title: "The Trial", author: "Franz Kafka", genre: "Classics", link: "https://openlibrary.org/works/OL109101W/The_Trial", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-618.jpg" },
-                { title: "Middlemarch", author: "George Eliot", genre: "Classics", link: "https://openlibrary.org/works/OL1491356W/Middlemarch", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-619.jpg" },
-                { title: "Heart of Darkness", author: "Joseph Conrad", genre: "Classics", link: "https://openlibrary.org/works/OL109103W/Heart_of_Darkness", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-620.jpg" },
-                { title: "The Awakening", author: "Kate Chopin", genre: "Classics", link: "https://openlibrary.org/works/OL1491357W/The_Awakening", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-621.jpg" },
-                { title: "The House of Mirth", author: "Edith Wharton", genre: "Classics", link: "https://openlibrary.org/works/OL109109W/The_House_of_Mirth", img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-622.jpg" }
-            ];
-            books.forEach((book, index) => {
-                document.write(`
-                    <div class="book">
-                        <img src="${book.img}" alt="${book.title} 3D Cover">
-                        <h3>${book.title}</h3>
-                        <p>${book.author}</p>
-                        <p>${book.genre}</p>
-                        <a href="${book.link}" target="_blank">View on Open Library</a>
-                        <div class="insta-ui">
-                            <span>❤️ ${Math.floor(Math.random() * 1000 + 500)} likes</span>
-                            <span>💬 ${Math.floor(Math.random() * 50 + 20)} comments</span>
-                        </div>
-                    </div>
-                `);
-            });
-        </script>
-    </div>
-</body>
-</html>
+		<article style="--avarage-color: #afa294">
+			<figure>
+				<a href="2.pdf">
+				<img src="2 cover.PNG" >
+				<figcaption>SID AND SIN #1</figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #3c3c3d">
+			<figure>
+				<a href="3.pdf">
+				<img src="3 cover.PNG">
+				<figcaption>Web Traffic Explosion</figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #b47460">
+			<figure>
+				<a href="4.pdf">
+				<img src="4 cover.PNG">
+				<figcaption>Cyber Love</figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #60a6ce">
+			<figure>
+				<a href="5.pdf">
+				<img src="5 cover.PNG">
+				<figcaption>The ‘Don’ts’ In Buying Treadmills</figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #46666f">
+			<figure>
+				<a href="6.pdf">
+				<img src="6 cover.PNG">
+				<figcaption>how to become a successful social media influen</figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #8e898f">
+			<figure>
+				<a href="7.pdf">
+				<img src="7 cover.PNG">
+				<figcaption>Recurring Income Secrets </figcaption>
+				</a>
+			</figure>
+		</article>
+
+		<article style="--avarage-color: #8d516e">
+			<figure>
+				<a href="8.pdf">
+				<img src="8.png">
+				<figcaption>How To Get The Perfect Job</figcaption>
+				</a>
+			</figure>
+		</article>
+	</section>
+
+	<section>
+		<header>
+			<h1>Completed</h1>
+		</header>
+		<article style="--avarage-color: #6e695e">
+			<figure>
+				<a href="9.pdf">
+				<img src="9 cover.PNG">
+				<figcaption> Debt-Free Lifestyle</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #b16e79">
+			<figure>
+				<a href="10.pdf">
+				<img src="10 cover.PNG">
+				<figcaption>101 Dating Tips</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #bdbdbd">
+			<figure>
+				<a href="11.pdf">
+				<img src="11 cover.PNG">
+				<figcaption>“Party Travel”</figcaption>
+				</a>
+			</figure>
+		</article>
+	</section>
+
+	<section>
+		<header>
+			<h1>Fantasy</h1>
+		</header>
+		<article style="--avarage-color: #7b4d35">
+			<figure>
+				<a href="Attack_on_Titan_Vol_1_-.pdf">
+				<img src="AOT(14).png">
+				<figcaption>BLAME!</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #ceb5a8">
+			<figure>
+				<a href="Fullmetal_Alchemist_Vol_1.pdf">
+				<img src="cover alchmist.png">
+				<figcaption>I Have a Crush at Work</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #6d413f">
+			<figure>
+				<a href="Fullmetal_alchemist_volume 2.pdf">
+				<img src="cover alchmist (2).png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #666060">
+			<figure>
+				<a href="Freaky_Friday_-.pdf">
+				<img src="friday.png">
+				<figcaption>FREAKY MONDAY</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #827d88">
+			<figure>
+				<a href="Every_Day_.pdf">
+				<img src="every day.png">
+				<figcaption>every day</figcaption>
+				</a>
+			</figure>
+		</article>
+
+	</section>
+</main>
+<section>
+		<header>
+			<h1>Islamic</h1>
+		</header>
+		<article style="--avarage-color: #7b4d35">
+			<figure>
+				<a href="The_Hobbit.pdf">
+				<img src="the hobbit.png">
+				<figcaption>BLAME!</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #ceb5a8">
+			<figure>
+				<a href="29.pdf">
+				<img src="cisco ccna.png">
+				<figcaption>I Have a Crush at Work</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #6d413f">
+			<figure>
+				<a href="The_Left_Hand_of_Darkness.pdf">
+				<img src="Ursula K LeGuin.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #666060">
+			<figure>
+				<a href="31.pdf">
+				<img src="harry potter.png">
+				<figcaption>HoiR bollet</figcaption>
+				</a>
+			</figure>
+		</article>
+		<article style="--avarage-color: #827d88">
+			<figure>
+				<a href="32.pdf">
+				<img src="how to master.png">
+				<figcaption>Cigarette & Cherry</figcaption>
+				</a>
+			</figure>
+		</article>
+        <article style="--avarage-color: #827d88">
+			<figure>
+				<a href="Frieren.pdf">
+				<img src="download.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="Frieren2.pdf">
+				<img src="download.jpg">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="_OceanofPDF.com_Frieren_volume_10_-_Kanehito_Yamada.pdf">
+				<img src="Dilshad.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="Frieren1.pdf">
+				<img src="frieren3.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="22.pdf">
+				<img src="22.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="Walking.pdf">
+				<img src="Isekai Walking.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article>
+		</article><article style="--avarage-color: #827d88">
+			<figure>
+				<a href="_Deep_Work_-.pdf">
+				<img src="deep work.png">
+				<figcaption>urd</figcaption>
+				</a>
+			</figure>
+		</article>
+	</section>
