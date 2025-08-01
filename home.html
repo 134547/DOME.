@@ -41,7 +41,147 @@
         <h2>About Our Library</h2>
         <p>Dillu Academy Library provides free access to educational resources for students, teachers, and admins. Discover books, contribute to our collection, and enhance your learning experience.</p>
     </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Library</title>
 
+<style>
+@layer base, tokens, animations, components, utilities;
+
+@layer tokens {
+	@font-face {
+		font-family: Troubleside;
+		src: url("https://cdn.jsdelivr.net/gh/chytanka/chytanka.github.io/src/assets/fonts/Troubleside.ttf");
+		font-display: swap;
+	}
+
+	:root {
+		--ratio: 257 / 364;
+		--t: 0.133333334s;
+		--accent: oklch(from #ffd60a l c h);
+		--surface: oklch(from #166496 0.12 min(c, 0.0512) h);
+
+		--avarage-l: 0.48;
+		--avarage-l-2: 0.36;
+		--avarage-base: oklch(from #ffd60a var(--avarage-l) 0.0192 h);
+		--text: white;
+
+		--radius: 0.5rem;
+		--border-size: 0.25rem;
+
+		background: var(--surface);
+		color: var(--text);
+		font-family: Arial, sans-serif;
+	}
+
+	@property --item-scale { syntax: "<number>"; inherits: true; initial-value: 1; }
+	@property --item-angle { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+}
+
+@layer animations {
+	@keyframes fadeBook {
+		0%, 33% { opacity: 1; }
+		40%, 100% { opacity: 0; }
+	}
+}
+
+@layer base {
+	body, figure { margin: 0; }
+	* { box-sizing: border-box; }
+	img { width: 100%; height: auto; }
+}
+
+@layer components {
+	h1 {
+		color: var(--accent);
+		font-family: Troubleside;
+		margin: 0 0 1rem;
+		text-align: center;
+	}
+
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		background: var(--surface);
+	}
+
+	main {
+		width: 100%;
+		max-width: 1200px;
+		padding: 1rem;
+	}
+
+	section {
+		margin-bottom: 2rem;
+	}
+
+	/* Auto-change setup for Completed */
+	.completed-books {
+		position: relative;
+		width: min(250px, 80%);
+		aspect-ratio: 257 / 364;
+		margin: auto;
+	}
+
+	.completed-books article {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		animation: fadeBook 9s infinite;
+	}
+
+	.completed-books article:nth-child(1) { animation-delay: 0s; }
+	.completed-books article:nth-child(2) { animation-delay: 3s; }
+	.completed-books article:nth-child(3) { animation-delay: 6s; }
+
+	figure img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: var(--radius);
+	}
+
+	figure figcaption {
+		font-family: Troubleside;
+		margin-top: 0.5rem;
+		font-size: 1rem;
+		text-align: center;
+	}
+}
+</style>
+</head>
+<body>
+
+<main>
+	<!-- Completed section with auto change -->
+	<section>
+		<header><h1>Example</h1></header>
+		<div class="completed-books">
+			<article style="--avarage-color: #6e695e">
+				<figure><a href="9.pdf"><img src="9 cover.PNG"><figcaption>Debt-Free Lifestyle</figcaption></a></figure>
+			</article>
+			<article style="--avarage-color: #b16e79">
+				<figure><a href="10.pdf"><img src="10 cover.PNG"><figcaption>101 Dating Tips</figcaption></a></figure>
+			</article>
+			<article style="--avarage-color: #bdbdbd">
+				<figure><a href="11.pdf"><img src="11 cover.PNG"><figcaption>“Party Travel”</figcaption></a></figure>
+			</article>
+		</div>
+	</section>
+
+	<!-- You can add your Reading, Fantasy, Islamic sections here if you want -->
+</main>
+
+</body>
+</html>
+<a href="books.html">Books</a>
     <script src="script.js"></script>
 </body>
 </html>
