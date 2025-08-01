@@ -42,56 +42,135 @@
         <p>Dillu Academy Library provides free access to educational resources for students, teachers, and admins. Discover books, contribute to our collection, and enhance your learning experience.</p>
     </section>
 
+<style>
+    .book-container {
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .book-carousel {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .book {
+        background-color: var(--average-color, #fff);
+        border-radius: 8px;
+        padding: 8px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .book img {
+        width: 100%;
+        border-radius: 6px;
+        display: block;
+    }
+
+    .book figcaption {
+        margin-top: 5px;
+        font-size: 0.9em;
+        color: #333;
+    }
+
+    /* Small side books */
+    .small {
+        transform: scale(0.7);
+        opacity: 0.5;
+        width: 100px;
+    }
+
+    /* Big center book */
+    .big {
+        transform: scale(1.2);
+        opacity: 1;
+        width: 180px;
+        z-index: 1;
+    }
+</style>
+</head>
+<body>
+
 <section>
-    <h1>Completed</h1>
-    <div class="completed-books">
-        <article>
-            <figure>
-                <a href="9.pdf"><img src="9 cover.PNG" alt="Debt-Free Lifestyle"></a>
-                <figcaption>Debt-Free Lifestyle</figcaption>
-            </figure>
-        </article>
-        <article>
-            <figure>
-                <a href="10.pdf"><img src="10 cover.PNG" alt="101 Dating Tips"></a>
-                <figcaption>101 Dating Tips</figcaption>
-            </figure>
-        </article>
-        <article>
-            <figure>
-                <a href="11.pdf"><img src="11 cover.PNG" alt="Party Travel"></a>
-                <figcaption>Party Travel</figcaption>
-            </figure>
-        </article>
+    <h1>Reading</h1>
+    <div class="book-container">
+        <div class="book-carousel">
+            <article class="book small" id="left-book"></article>
+            <article class="book big" id="center-book"></article>
+            <article class="book small" id="right-book"></article>
+        </div>
     </div>
 </section>
 
-.completed-books article:nth-child(1) { animation-delay: 0s; }
-.completed-books article:nth-child(2) { animation-delay: 3s; }
-.completed-books article:nth-child(3) { animation-delay: 6s; }
+<script>
+    // Your book data
+    const books = [
+        {color:"#b0b6a9", link:"1.pdf", img:"1 cover.PNG", title:"BOBBI SCHEMERHORN"},
+        {color:"#afa294", link:"2.pdf", img:"2 cover.PNG", title:"SID AND SIN #1"},
+        {color:"#3c3c3d", link:"3.pdf", img:"3 cover.PNG", title:"Web Traffic Explosion"},
+        {color:"#b47460", link:"4.pdf", img:"4 cover.PNG", title:"Cyber Love"},
+        {color:"#60a6ce", link:"5.pdf", img:"5 cover.PNG", title:"The ‘Don’ts’ In Buying Treadmills"},
+        {color:"#46666f", link:"6.pdf", img:"6 cover.PNG", title:"Social Media Influencer"},
+        {color:"#8e898f", link:"7.pdf", img:"7 cover.PNG", title:"Recurring Income Secrets"}
+    ];
 
-figure {
-    margin: 0;
-}
+    let index = 0;
 
-figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
+    const leftBook = document.getElementById("left-book");
+    const centerBook = document.getElementById("center-book");
+    const rightBook = document.getElementById("right-book");
 
-figcaption {
-    margin-top: 0.5rem;
-    text-align: center;
-    font-size: 1rem;
-}
+    function renderBooks() {
+        const leftIndex = (index - 1 + books.length) % books.length;
+        const centerIndex = index;
+        const rightIndex = (index + 1) % books.length;
 
-@keyframes fadeBook {
-    0%, 33.33% { opacity: 1; }
-    44.44%, 100% { opacity: 0; }
-}
-</style>
+        leftBook.innerHTML = `
+            <figure>
+                <a href="${books[leftIndex].link}">
+                    <img src="${books[leftIndex].img}" alt="${books[leftIndex].title}">
+                    <figcaption>${books[leftIndex].title}</figcaption>
+                </a>
+            </figure>
+        `;
+        leftBook.style.setProperty("--average-color", books[leftIndex].color);
+
+        centerBook.innerHTML = `
+            <figure>
+                <a href="${books[centerIndex].link}">
+                    <img src="${books[centerIndex].img}" alt="${books[centerIndex].title}">
+                    <figcaption>${books[centerIndex].title}</figcaption>
+                </a>
+            </figure>
+        `;
+        centerBook.style.setProperty("--average-color", books[centerIndex].color);
+
+        rightBook.innerHTML = `
+            <figure>
+                <a href="${books[rightIndex].link}">
+                    <img src="${books[rightIndex].img}" alt="${books[rightIndex].title}">
+                    <figcaption>${books[rightIndex].title}</figcaption>
+                </a>
+            </figure>
+        `;
+        rightBook.style.setProperty("--average-color", books[rightIndex].color);
+    }
+
+    function nextBook() {
+        index = (index + 1) % books.length;
+        renderBooks();
+    }
+
+    renderBooks();
+    setInterval(nextBook, 3000);
+</script>
 </body>
 </html>
 
