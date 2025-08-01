@@ -42,7 +42,89 @@
         <p>Dillu Academy Library provides free access to educational resources for students, teachers, and admins. Discover books, contribute to our collection, and enhance your learning experience.</p>
     </section>
 
+<section>
+    <h1>Completed</h1>
+    <div class="completed-books">
+        <article>
+            <figure>
+                <a href="9.pdf"><img src="9 cover.PNG" alt="Debt-Free Lifestyle"></a>
+                <figcaption>Debt-Free Lifestyle</figcaption>
+            </figure>
+        </article>
+        <article>
+            <figure>
+                <a href="10.pdf"><img src="10 cover.PNG" alt="101 Dating Tips"></a>
+                <figcaption>101 Dating Tips</figcaption>
+            </figure>
+        </article>
+        <article>
+            <figure>
+                <a href="11.pdf"><img src="11 cover.PNG" alt="Party Travel"></a>
+                <figcaption>Party Travel</figcaption>
+            </figure>
+        </article>
+    </div>
+</section>
+<style>
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: #e0e4e7;
+    font-family: Arial, sans-serif;
+    color: rgb(11, 204, 20);
+}
 
+h1 {
+    text-align: center;
+    color: #12ff0a;
+    margin-bottom: 1rem;
+}
+
+.completed-books {
+    position: relative;
+    width: min(250px, 80%);
+    aspect-ratio: 257 / 364;
+}
+
+.completed-books article {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    animation: fadeBook 9s infinite;
+}
+
+.completed-books article:nth-child(1) { animation-delay: 0s; }
+.completed-books article:nth-child(2) { animation-delay: 3s; }
+.completed-books article:nth-child(3) { animation-delay: 6s; }
+
+figure {
+    margin: 0;
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+@keyframes fadeBook {
+    0%, 33.33% { opacity: 1; }
+    44.44%, 100% { opacity: 0; }
+}
+</style>
 </body>
 </html>
 
