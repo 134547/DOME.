@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dillu Academy- Home</title>
+    <title>Dillu Academy - Home</title>
     <style>
         * {
             margin: 0;
@@ -21,7 +21,7 @@
         /* Navigation Bar */
         nav {
             background: linear-gradient(90deg, #15e430, #04f052);
-            padding: 1.2rem;
+            padding: 0.8rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -32,31 +32,33 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
         }
 
+        /* Logo Image */
+        .nav-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;  /* makes it circular */
+            object-fit: cover;   /* ensures image fills circle */
+            border: 2px solid #fff;
+        }
+
+        /* Logo Text */
         .logo {
             color: #fff;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .nav-links a:hover {
-            color: #00aaff;
+            white-space: nowrap; /* keep text in one line */
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1600x900/?library');
+            padding-top: 80px; /* space for fixed nav */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://source.unsplash.com/1600x900/?library');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -72,7 +74,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
         }
 
@@ -95,55 +97,6 @@
             background: #0088cc;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            background: #f4f4f4;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #1a2a44;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            min-height: 120px;
-        }
-
-        .login-button,
-        .submit-button {
-            padding: 0.8rem 1.5rem;
-            margin: 1rem 0.5rem;
-            background: #00aaff;
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .login-button:hover,
-        .submit-button:hover {
-            background: #0088cc;
-        }
-
         /* Footer */
         footer {
             background: #1a2a44;
@@ -154,24 +107,30 @@
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
             }
 
-            .nav-links a {
-                margin-left: 1rem;
-                font-size: 0.9rem;
+            .nav-container img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
+            <img src="dil.jpg" alt="Dillu Academy Logo">
             <div class="logo">Dillu Academy Library</div>
         </div>
     </nav>
@@ -180,7 +139,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>أهلاً بكم في مكتبة أكاديمية ديلو</h1>
-            <p id="hero-text">Discover a world of knowledge</p>
+            <p>Discover a world of knowledge</p>
             <a href="login.html" class="cta-button">Explore Now</a>
         </div>
     </section>
@@ -190,9 +149,5 @@
         <p>&copy; 2025 Dillu Academy Library. All rights reserved.</p>
     </footer>
 
-   
 </body>
-
 </html>
-
-
